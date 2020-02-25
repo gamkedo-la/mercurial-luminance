@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float turnSpeed = 0.0f;
+    private float turnSpeed = 1.0f;
     private float driveSpeed = 0.0f;
 
     // Start is called before the first frame update
