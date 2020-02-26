@@ -5,23 +5,25 @@ using UnityEngine;
 public class VectorFollow : MonoBehaviour
 {
     public GameObject player;
-    public Transform pTransform;
 
-    float mSpeed = 10.0f;
-
-    public Vector3 mLookDirection;
+    float mSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pTransform = player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        mLookDirection = (pTransform.position - pTransform.position).normalized;
-        pTransform.Translate(0.0f, 0.0f, mSpeed * Time.deltaTime);
+        transform.Translate(0.0f, 0.0f, mSpeed * Time.deltaTime);
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 mLookDirection = (player.transform.position - transform.position);
+        //transform.LookAt(player.transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mLookDirection), 0.01f);
     }
 }
