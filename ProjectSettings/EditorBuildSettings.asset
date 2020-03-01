@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IntroScene.unity
+    path: Assets/TextMesh Pro/Scenes/IntroScene.unity
     guid: 57767e5e655b58d4f9138c5e5b1441e4
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/TextMesh Pro/Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
