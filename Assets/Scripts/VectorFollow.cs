@@ -17,13 +17,21 @@ public class VectorFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0.0f, 0.0f, mSpeed * Time.deltaTime);
+        
     }
 
     void FixedUpdate()
     {
         Vector3 mLookDirection = (player.transform.position - transform.position);
-        //transform.LookAt(player.transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mLookDirection), 0.01f);
+        float dist = (player.transform.position - transform.position).magnitude;
+        print("Distance to other: " + dist);
+        if (dist < 5.0f)
+        {
+            transform.Translate(0.0f, 0.0f, mSpeed * Time.deltaTime);   
+            //transform.LookAt(player.transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mLookDirection), 0.1f);
+        }
+
+
     }
 }
