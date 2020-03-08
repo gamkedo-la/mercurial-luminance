@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundHover : MonoBehaviour
+public class FlyHeight : MonoBehaviour
 {
-    public float minAlt = 1.0f;
+    public float maxAlt = 5.0f;
     RaycastHit rhInfo;
     // Start is called before the first frame update
     void Start()
@@ -15,10 +15,9 @@ public class GroundHover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out rhInfo, minAlt))
+        if (Physics.Raycast(transform.position, Vector3.down, out rhInfo, maxAlt))
         {
-            transform.position = rhInfo.point + minAlt * Vector3.up;
+            transform.position = rhInfo.point + maxAlt * Vector3.up;
         }
-
     }
 }
