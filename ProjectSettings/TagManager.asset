@@ -8,6 +8,8 @@ TagManager:
   - FadingText
   - IntroImage
   - TransitionEffectImage
+  - Orange
+  - OrangeSpirit
   layers:
   - Default
   - TransparentFX

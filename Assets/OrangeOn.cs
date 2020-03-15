@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class OrangeOn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] itemToToggle;
+    public string tagToCheck = "Orange";
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == tagToCheck)
+        {
+            foreach(GameObject item in itemToToggle)
+            {
+                if(item.activeSelf == true)
+                {
+                    item.SetActive(false);
+                    //Debug.Log("Deactivating.");
+                }
+                else
+                {
+                    item.SetActive(true);
+                    //Debug.Log("Activating.");
+                }
+            }
+        }
     }
 }
