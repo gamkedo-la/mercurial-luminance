@@ -10,6 +10,7 @@ TagManager:
   - TransitionEffectImage
   - Orange
   - OrangeSpirit
+  - GreenSpirit
   layers:
   - Default
   - TransparentFX
