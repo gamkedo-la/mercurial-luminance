@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float driveSpeed = 0.0f;
     private float pitchFacing = 0.0f;
     private float yawFacing = 0.0f;
+    public float forwardSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * 5.0f * driveSpeed;
+        transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed;
 
         //spin with our keys
         //transform.Rotate(Vector3.up, turnSpeed * 40.0f * Time.deltaTime);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlyHeight : MonoBehaviour
 {
-    public float maxAlt = 5.0f;
+    public float maxAlt = 2.0f;
     RaycastHit rhInfo;
     // Start is called before the first frame update
     void Start()
