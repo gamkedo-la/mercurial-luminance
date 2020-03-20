@@ -24,7 +24,7 @@ public class VectorFollow : MonoBehaviour
     {
         Vector3 mLookDirection = (player.transform.position - transform.position);
         float dist = (player.transform.position - transform.position).magnitude;
-        print("Distance to other: " + dist);
+        //print("Distance to other: " + dist);
         if (dist < 5.0f)
         {
             transform.Translate(0.0f, 0.0f, mSpeed * Time.deltaTime);   
