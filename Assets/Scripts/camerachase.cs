@@ -19,14 +19,18 @@ public class camerachase : MonoBehaviour
         camOffSet += Vector3.up * 3.0f;
 
         RaycastHit rhInfo;
-        LayerMask cameraMask = LayerMask.NameToLayer("Player");
-        if (Physics.Raycast(transform.position, camOffSet, out rhInfo, camOffSet.magnitude, cameraMask))
+        LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"
+        float scaledBackBy = 1.0f;
+        float camOffsetLength = camOffSet.magnitude;
+        if (Physics.Raycast(transform.position, camOffSet, out rhInfo, camOffsetLength, cameraMask))
         {
             Debug.Log(rhInfo.collider.gameObject.name);
             camOffSet = rhInfo.point - transform.position;
+            scaledBackBy = camOffSet.magnitude / camOffsetLength;
         }
-            Camera.main.transform.position = transform.position + camOffSet;
-        Camera.main.transform.LookAt(transform.position + Vector3.up * 2.0f);
+
+        Camera.main.transform.position = transform.position + camOffSet;
+        Camera.main.transform.LookAt(transform.position + Vector3.up * 2.0f * scaledBackBy);
 
 
         

@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 198852495}
   - component: {fileID: 198852493}
   - component: {fileID: 198852496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Orange Glow
   m_TagString: OrangeSpirit
   m_Icon: {fileID: 0}
@@ -5093,7 +5093,7 @@ GameObject:
   - component: {fileID: 242321504}
   - component: {fileID: 242321506}
   - component: {fileID: 242321505}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20323,7 +20323,7 @@ GameObject:
   - component: {fileID: 1295400941}
   - component: {fileID: 1295400942}
   - component: {fileID: 1295400943}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Green Glow
   m_TagString: GreenSpirit
   m_Icon: {fileID: 0}
@@ -25708,7 +25708,7 @@ GameObject:
   - component: {fileID: 1679889453}
   - component: {fileID: 1679889455}
   - component: {fileID: 1679889454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30870,7 +30870,7 @@ GameObject:
   - component: {fileID: 1863291802}
   - component: {fileID: 1863291804}
   - component: {fileID: 1863291803}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35724,7 +35724,7 @@ GameObject:
   - component: {fileID: 1942661803}
   - component: {fileID: 1942661805}
   - component: {fileID: 1942661804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
