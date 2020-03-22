@@ -78,6 +78,12 @@ public class IntroManager : MonoBehaviour
                 case ImageType.scrollingRightToLeft:
                     introImage.GetComponent<Animator>().SetTrigger("RightToLeft");
                     break;
+                case ImageType.ZoomIn:
+                    introImage.GetComponent<Animator>().SetTrigger("ZoomIn");
+                    break;
+                case ImageType.ZoomOut:
+                    introImage.GetComponent<Animator>().SetTrigger("ZoomOut");
+                    break;
             }
 
             // play effect
@@ -123,6 +129,8 @@ public class IntroManager : MonoBehaviour
     {
         still,
         scrollingLeftToRight,
-        scrollingRightToLeft
+        scrollingRightToLeft,
+        ZoomIn,
+        ZoomOut
     }
 }
