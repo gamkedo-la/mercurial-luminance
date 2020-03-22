@@ -765,15 +765,15 @@ MonoBehaviour:
   FaidngTextArray:
   - text: This text is set in inspector
     timeInSeconds: 3
-  - text: ' '
-    timeInSeconds: 1
+  - text: This game is awesome!
+    timeInSeconds: 5
   - text: 'Another text '
     timeInSeconds: 3
   ImageArray:
   - image: {fileID: 21300000, guid: 93b2c1309c7e01c418759a0bb2f10e9c, type: 3}
     timeInSeconds: 5
     zoomFactor: 1
-    ImageType: 0
+    ImageType: 3
   - image: {fileID: 21300000, guid: 69cbfc1e95f6ba946896b421edbadd1a, type: 3}
     timeInSeconds: 5
     zoomFactor: 1
@@ -782,6 +782,10 @@ MonoBehaviour:
     timeInSeconds: 5
     zoomFactor: 0.5
     ImageType: 1
+  - image: {fileID: 21300000, guid: ef214f2b0f332d043b68597977de748f, type: 3}
+    timeInSeconds: 5
+    zoomFactor: 0.5
+    ImageType: 4
 --- !u!4 &1482762984
 Transform:
   m_ObjectHideFlags: 0
