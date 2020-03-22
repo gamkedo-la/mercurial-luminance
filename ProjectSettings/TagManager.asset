@@ -11,6 +11,10 @@ TagManager:
   - Orange
   - OrangeSpirit
   - GreenSpirit
+  - RedSpirit
+  - YellowSpirit
+  - BlueSpirit
+  - PurpleSpirit
   layers:
   - Default
   - TransparentFX
