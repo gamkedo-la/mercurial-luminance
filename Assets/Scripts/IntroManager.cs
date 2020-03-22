@@ -65,6 +65,20 @@ public class IntroManager : MonoBehaviour
         foreach (var currentImage in ImageArray)
         {
             introImage.GetComponent<Image>().sprite = currentImage.image;
+            introImage.GetComponent<RectTransform>().localScale = new Vector3(currentImage.zoomFactor, currentImage.zoomFactor,1);
+
+            switch (currentImage.ImageType)
+            {
+                case ImageType.still:
+                    introImage.GetComponent<RectTransform>().position = Vector3.zero;
+                    break;
+                case ImageType.scrollingLeftToRight:
+                    introImage.GetComponent<Animator>().SetTrigger("LeftToRight");
+                    break;
+                case ImageType.scrollingRightToLeft:
+                    introImage.GetComponent<Animator>().SetTrigger("RightToLeft");
+                    break;
+            }
 
             // play effect
             while (transitionEffectColor.a > 0)
@@ -101,14 +115,14 @@ public class IntroManager : MonoBehaviour
     {
         public Sprite image;
         public float timeInSeconds;
-        public float zoomFactor = 1;
+        public float zoomFactor = 1f;
         public ImageType ImageType;
     }
 
     public enum ImageType
     {
         still,
-        scrollingLeftToRigh,
+        scrollingLeftToRight,
         scrollingRightToLeft
     }
 }
