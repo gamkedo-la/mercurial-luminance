@@ -38441,6 +38441,7 @@ GameObject:
   - component: {fileID: 502884736}
   - component: {fileID: 502884735}
   - component: {fileID: 502884738}
+  - component: {fileID: 502884742}
   - component: {fileID: 502884739}
   - component: {fileID: 502884741}
   - component: {fileID: 502884740}
@@ -38483,7 +38484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502884733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 032a2a66f8ab1494dae9126b0cb6b251, type: 3}
   m_Name: 
@@ -38537,7 +38538,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502884733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dbcab1062e050040a2050bf5d131693, type: 3}
   m_Name: 
@@ -38579,6 +38580,19 @@ MonoBehaviour:
   blueSpirit: {fileID: 0}
   purpleParticle: {fileID: 0}
   purpleSpirit: {fileID: 0}
+--- !u!114 &502884742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502884733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e646381af2be1504d864ea749583b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 20
 --- !u!114 &502884743
 MonoBehaviour:
   m_ObjectHideFlags: 0
