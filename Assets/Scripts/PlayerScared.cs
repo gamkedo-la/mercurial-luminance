@@ -8,6 +8,7 @@ public class PlayerScared : MonoBehaviour
     public GameObject playerTrailParticle;
     public GameObject playerScaredMoment;
     public GameObject playerScared;
+    public float fearTime;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,33 @@ public class PlayerScared : MonoBehaviour
     {
         if(other.tag == "fearMonster")
         {
+            /*transform.position = Random.insideUnitCircle * 0.5f;
             transform.position = Random.insideUnitCircle * 0.5f;
-            transform.position = Random.insideUnitCircle * 0.5f;
-            transform.position = Random.insideUnitCircle * 0.5f;
+            transform.position = Random.insideUnitCircle * 0.5f;*/
+            Fear();
+                      
+        }
+    }
+
+    void Fear()
+    {
             playerOk.SetActive(false);
             playerTrailParticle.SetActive(false);
+            playerScaredMoment.SetActive(true);
             playerScared.SetActive(true);
-        }
+            StartCoroutine(WaitforFear());  
+    }
+
+    void Ok()
+    {
+            playerOk.SetActive(true);
+            playerTrailParticle.SetActive(true);
+            playerScaredMoment.SetActive(false);
+            playerScared.SetActive(false);
+    }
+    IEnumerator WaitforFear()
+    {
+        yield return new WaitForSeconds(fearTime);
+        Ok();
     }
 }
