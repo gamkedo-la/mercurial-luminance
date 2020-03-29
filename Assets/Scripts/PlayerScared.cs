@@ -36,8 +36,7 @@ public class PlayerScared : MonoBehaviour
             /*transform.position = Random.insideUnitCircle * 0.5f;
             transform.position = Random.insideUnitCircle * 0.5f;
             transform.position = Random.insideUnitCircle * 0.5f;*/
-            Fear();
-                      
+            Fear();                     
         }
     }
 
