@@ -15,6 +15,11 @@ TagManager:
   - YellowSpirit
   - BlueSpirit
   - PurpleSpirit
+  - ScaredMoment
+  - Scared
+  - PlayerOk
+  - fearMonster
+  - PlayerTrailParticle
   layers:
   - Default
   - TransparentFX
