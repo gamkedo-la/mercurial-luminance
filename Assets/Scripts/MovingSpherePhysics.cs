@@ -13,6 +13,13 @@ public class MovingSpherePhysics : MonoBehaviour
     Vector3 velocity;
     Vector3 acceleration;
 
+    Rigidbody body;
+
+    void Awake()
+    {
+        body = GetComponent<Rigidbody>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,16 +35,15 @@ public class MovingSpherePhysics : MonoBehaviour
 
         Vector3 desiredVelocity =
             new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
+
+        velocity = body.velocity;
         float maxSpeedChange = maxAcceleration * Time.deltaTime;
         velocity.x =
             Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
         velocity.z =
             Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
 
-        Vector3 displacement = velocity * Time.deltaTime;
+        body.velocity = velocity;       
 
-        Vector3 newPosition = transform.localPosition + displacement;
-       
-        transform.localPosition = newPosition;
     }
 }
