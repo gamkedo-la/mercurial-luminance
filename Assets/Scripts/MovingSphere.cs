@@ -13,6 +13,9 @@ public class MovingSphere : MonoBehaviour
     [SerializeField]
     Rect allowedArea = new Rect(-50f, -50f, 50f, 0f);
 
+    [SerializeField, Range(0f, 1f)]
+    float bounciness = 0.5f;
+
     Vector3 velocity;
     Vector3 acceleration;
 
@@ -50,23 +53,25 @@ public class MovingSphere : MonoBehaviour
         if(newPosition.x < allowedArea.xMin)
         {
             newPosition.x = allowedArea.xMin;
-            velocity.x = 0f;
+            //bounce off the edges, probably remove later on
+            //place = 0f; in place of -velocity.x;  Do for z also, 4 locations
+            velocity.x = -velocity.x * bounciness;
         }
         else if (newPosition.x > allowedArea.xMax)
         {
             newPosition.x = allowedArea.xMax;
-            velocity.x = 0f;
+            velocity.x = -velocity.x * bounciness;
         }
 
         if(newPosition.z < allowedArea.yMin)
         {
             newPosition.z = allowedArea.yMin;
-            velocity.z = 0f;
+            velocity.z = -velocity.z * bounciness;
         }
         else if(newPosition.z > allowedArea.yMax)
         {
             newPosition.z = allowedArea.yMax;
-            velocity.z = 0f;
+            velocity.z = -velocity.z * bounciness;
         }
 
         transform.localPosition = newPosition;
