@@ -28,6 +28,11 @@ public class MovingSphere : MonoBehaviour
 
         Vector3 desiredVelocity = 
             new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
+        float maxSpeedChange = maxAcceleration * Time.deltaTime;
+        velocity.x =
+            Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
+        velocity.z =
+            Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
 
         Vector3 displacement = velocity * Time.deltaTime;
 
