@@ -6,6 +6,7 @@ public class VectorFollow : MonoBehaviour
 {
     public GameObject player;
     public bool Activated;
+    public ParticleSystem.EmissionModule particles;
 
     float fastSpeed = 5.0f;
     float mediumSpeed = 1.0f;
@@ -17,6 +18,8 @@ public class VectorFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ParticleSystem pfx = gameObject.GetComponent<ParticleSystem>();
+        particles = pfx.emission;
         player = GameObject.FindGameObjectWithTag("Player");
         Activated = false;
         orbitRange = Random.Range(0.8f, 3.0f);
@@ -50,6 +53,7 @@ public class VectorFollow : MonoBehaviour
 
             if (dist < orbitRange)
             {
+                particles.rateOverTime = 4;
                 speedNow = orbitSpeed;
                 turnRate = 0.05f;
                 angleOffset = 90.0f;
