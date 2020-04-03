@@ -10,7 +10,7 @@ public class MovingSpherePhysics : MonoBehaviour
     [SerializeField, Range(0f, 100f)]
     float maxAcceleration = 10f;
 
-    Vector3 velocity;
+    Vector3 velocity, desiredVelocity;
     Vector3 acceleration;
 
     Rigidbody body;
@@ -33,9 +33,12 @@ public class MovingSpherePhysics : MonoBehaviour
         playerInput.x = Input.GetAxis("Horizontal");
         playerInput.y = Input.GetAxis("Vertical");
 
-        Vector3 desiredVelocity =
+        desiredVelocity =
             new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
+    }
 
+    void FixedUpdate()
+    {
         velocity = body.velocity;
         float maxSpeedChange = maxAcceleration * Time.deltaTime;
         velocity.x =
@@ -43,7 +46,6 @@ public class MovingSpherePhysics : MonoBehaviour
         velocity.z =
             Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
 
-        body.velocity = velocity;       
-
+        body.velocity = velocity;    
     }
 }
