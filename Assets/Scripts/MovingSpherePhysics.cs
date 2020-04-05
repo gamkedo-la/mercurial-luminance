@@ -64,7 +64,7 @@ public class MovingSpherePhysics : MonoBehaviour
         }
         body.velocity = velocity;
         onGround = false;
-        Debug.Log(onGround + "Fixed Update");
+        Debug.Log(onGround + " Fixed Update");
     }
 
     void Jump()
@@ -75,15 +75,23 @@ public class MovingSpherePhysics : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
-        onGround = true;
-        Debug.Log(onGround + "OnCollisionEnter");
+        EvaluateCollision(collision);
     }
 
-    void OnCollisionStay()
+    void OnCollisionStay(Collision collision)
     {
-        onGround = true;
+        EvaluateCollision(collision);
+        Debug.Log(collision.gameObject + "OnCollisionStay");
     }
 
+    void EvaluateCollision (Collision collision)
+    {
+        for(int i = 0; i < collision.contactCount; i++)
+        {
+            Vector3 normal = collision.GetContact(i).normal;
+            //onGround |= normal.y >= 0.9f;
+        }
+    }
 }
