@@ -13,10 +13,15 @@ public class MovingSpherePhysics : MonoBehaviour
     [SerializeField, Range(0f, 10f)]
     float jumpHeight = 2f;
 
+    [SerializeField, Range(0, 5)]
+    int maxAirJumps = 0;
+
     Vector3 velocity, desiredVelocity;
     Vector3 acceleration;
 
     Rigidbody body;
+
+    int jumpPhase;
 
     bool desiredJump;
     bool onGround;
@@ -60,22 +65,44 @@ public class MovingSpherePhysics : MonoBehaviour
             desiredJump = false;
             Jump();
         }
-        body.velocity = velocity; 
+        UpdateState();
     }
 
     void Jump()
     {
-        velocity.y += Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
+        if (onGround || jumpPhase < maxAirJumps)
+        {
+            jumpPhase += 1;
+            velocity.y += Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
+        }
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
-        onGround = true;
+        EvaluateCollision(collision);
     }
 
-    void OnCollisionExit()
+    void OnCollisionExit(Collision collision)
     {
-        onGround = false;
+        EvaluateCollision(collision);
+    }
+
+    void EvaluateCollision(Collision collision)
+    {
+        for(int i = 0; i < collision.contactCount; i++)
+        {
+            Vector3 normal = collision.GetContact(i).normal;
+            onGround |= normal.y >= 0.9f;
+        }
+    }
+
+    void UpdateState()
+    {
+        velocity = body.velocity;
+        if(onGround)
+        {
+            jumpPhase = 0;
+        }
     }
 
 }
