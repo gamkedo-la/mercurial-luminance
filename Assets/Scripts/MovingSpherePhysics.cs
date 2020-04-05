@@ -48,6 +48,8 @@ public class MovingSpherePhysics : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+        
         velocity = body.velocity;
         float maxSpeedChange = maxAcceleration * Time.deltaTime;
         velocity.x =
@@ -60,22 +62,28 @@ public class MovingSpherePhysics : MonoBehaviour
             desiredJump = false;
             Jump();
         }
-        body.velocity = velocity; 
+        body.velocity = velocity;
+        onGround = false;
+        Debug.Log(onGround + "Fixed Update");
     }
 
     void Jump()
     {
-        velocity.y += Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
+        if (onGround)
+        {
+            velocity.y += Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
+        }
     }
 
     void OnCollisionEnter()
     {
         onGround = true;
+        Debug.Log(onGround + "OnCollisionEnter");
     }
 
-    void OnCollisionExit()
+    void OnCollisionStay()
     {
-        onGround = false;
+        onGround = true;
     }
 
 }
