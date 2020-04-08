@@ -28,7 +28,7 @@ public class camerachase : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         float Offsetx;
         float Offsety;
