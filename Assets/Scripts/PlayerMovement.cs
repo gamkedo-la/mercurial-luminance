@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private float pitchFacing = 0.0f;
     private float yawFacing = 0.0f;
     public float forwardSpeed = 5.0f;
+    private float zVel = 0.0f;
+    public float minAlt = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed;
+        transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed + zVel * Vector3.up;
+
+        RaycastHit rhInfo;
+        LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"
+        if (Physics.Raycast(transform.position, Vector3.down, out rhInfo, minAlt, cameraMask))
+        {
+            transform.position = rhInfo.point + minAlt * Vector3.up;
+            zVel = 0.0f;
+           
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                zVel = 0.2f;
+            }
+        }
+        else
+        {
+            zVel += -.4f * Time.deltaTime;
+        }
+
 
         //spin with our keys
         //transform.Rotate(Vector3.up, turnSpeed * 40.0f * Time.deltaTime);
