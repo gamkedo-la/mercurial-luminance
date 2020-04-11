@@ -47,7 +47,7 @@ public class camerachase : MonoBehaviour
         float SpeedTranslate;
 
         //If the player keeps a certain speed, we enter "travel mode" camera: larger view, bit like flowers
-        Debug.Log("Velocity" + ObjVel.magnitude);
+        //Debug.Log("Velocity" + ObjVel.magnitude);
         //Debug.Log("Angular Drag" + rb.angularDrag);
 
         if (ObjVel.magnitude >= 1)
