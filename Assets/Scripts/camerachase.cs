@@ -5,14 +5,18 @@ using UnityEngine;
 public class camerachase : MonoBehaviour
 {
     private Vector3 velocity = Vector3.zero;
-    public Rigidbody rb;
-    public float timer;
-    public bool SwitchFieldOfViewInterp;
-    public bool FirstInitSwitch;
-    public float timerFieldOfView;
-    public float durationFieldOfView;
-    public float StartFieldOfView;
-    public float EndFieldOfView;
+    private Rigidbody rb;
+    private float timer;
+    private bool SwitchFieldOfViewInterp;
+    private bool FirstInitSwitch;
+    private float timerFieldOfView;
+    private float durationFieldOfView;
+    private float StartFieldOfView;
+    private float EndFieldOfView;
+
+    private Vector3 PrevPos;
+    private Vector3 NewPos;
+    private Vector3 ObjVel;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,13 @@ public class camerachase : MonoBehaviour
         FirstInitSwitch = false;
     }
 
+    void FixedUpdate()
+    {
+        NewPos = transform.position;
+        ObjVel = (NewPos - PrevPos) / Time.fixedDeltaTime;  
+        PrevPos = NewPos;  
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
@@ -34,9 +45,12 @@ public class camerachase : MonoBehaviour
         float Offsety;
         float FieldOfView;
         float SpeedTranslate;
-        
+
         //If the player keeps a certain speed, we enter "travel mode" camera: larger view, bit like flowers
-        if(rb.velocity.magnitude >= 9.0)
+        Debug.Log("Velocity" + ObjVel.magnitude);
+        //Debug.Log("Angular Drag" + rb.angularDrag);
+
+        if (ObjVel.magnitude >= 1)
         {
             timer -= Time.deltaTime;
         } else
