@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class VectorFollow : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject player, Orange, OrangeTree;
     public bool Activated;
+    public bool TreeActivated;
     public ParticleSystem.EmissionModule particles;
 
     float fastSpeed = 5.0f;
@@ -14,6 +15,7 @@ public class VectorFollow : MonoBehaviour
     float ai_ActivateRange = 2.0f;
     float fastRange;
     float orbitRange;
+    float tree_ActivateRange = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class VectorFollow : MonoBehaviour
         ParticleSystem pfx = gameObject.GetComponent<ParticleSystem>();
         particles = pfx.emission;
         player = GameObject.FindGameObjectWithTag("Player");
+        Orange = GameObject.FindGameObjectWithTag("OrangeSpirit");
+        OrangeTree = GameObject.FindGameObjectWithTag("Tree1");
         Activated = false;
         orbitRange = Random.Range(0.8f, 3.0f);
         fastRange = orbitRange + Random.Range(1.0f, 2.5f);
@@ -35,41 +39,84 @@ public class VectorFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 mLookDirection = (player.transform.position - transform.position);
-        float dist = (player.transform.position - transform.position).magnitude;
-        //print("Distance to other: " + dist);
-        if(Activated == false)
+        if (TreeActivated == false)
         {
-            if (dist < ai_ActivateRange)
+            Vector3 mLookDirection = (player.transform.position - transform.position);
+            float dist = (player.transform.position - transform.position).magnitude;
+            float distTree = (player.transform.position - OrangeTree.transform.position).magnitude;
+            //print("Distance to other: " + dist);
+            if (Activated == true)
             {
-                Activated = true;
+                if (distTree < tree_ActivateRange)
+                {
+                    TreeActivated = true;
+                }
+                else
+                {
+                    float turnRate = 0.1f;
+                    float speedNow;
+                    float angleOffset = 0.0f;
+
+                    if (dist < orbitRange)
+                    {
+                        particles.rateOverTime = 4;
+                        speedNow = orbitSpeed;
+                        turnRate = 0.05f;
+                        angleOffset = 90.0f;
+                    }
+                    else if (dist > fastRange)
+                    {
+                        speedNow = fastSpeed;
+                    }
+                    else
+                    {
+                        speedNow = mediumSpeed;
+                    }
+                    transform.Translate(0.0f, 0.0f, speedNow * Time.deltaTime);
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(mLookDirection) * Quaternion.AngleAxis(angleOffset, Vector3.up),
+                        turnRate);
+                }
+            }
+            else
+            {
+                if (Activated == false)
+                {
+                    if (dist < ai_ActivateRange)
+                    {
+                        Activated = true;
+                    }
+                }
             }
         }
         else
         {
+            Vector3 mLookDirection = (Orange.transform.position - transform.position);
+            float distTree = (OrangeTree.transform.position - transform.position).magnitude;
+
             float turnRate = 0.1f;
             float speedNow;
             float angleOffset = 0.0f;
 
-            if (dist < orbitRange)
+            if (distTree < orbitRange)
             {
                 particles.rateOverTime = 4;
                 speedNow = orbitSpeed;
                 turnRate = 0.05f;
                 angleOffset = 90.0f;
             }
-            else if (dist > fastRange)
+            else if (distTree > fastRange)
             {
                 speedNow = fastSpeed;
             }
             else
             {
-                speedNow = mediumSpeed;   
+                speedNow = mediumSpeed;
             }
-            transform.Translate(0.0f, 0.0f, speedNow * Time.deltaTime);   
-            transform.rotation = Quaternion.Slerp(transform.rotation, 
-                Quaternion.LookRotation(mLookDirection) * Quaternion.AngleAxis(angleOffset, Vector3.up), 
+            transform.Translate(0.0f, 0.0f, speedNow * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.LookRotation(mLookDirection) * Quaternion.AngleAxis(angleOffset, Vector3.up),
                 turnRate);
-        }   
+        }
     }
 }

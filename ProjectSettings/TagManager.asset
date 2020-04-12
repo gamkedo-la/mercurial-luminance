@@ -20,6 +20,8 @@ TagManager:
   - PlayerOk
   - fearMonster
   - PlayerTrailParticle
+  - Tree2
+  - Tree1
   layers:
   - Default
   - TransparentFX
