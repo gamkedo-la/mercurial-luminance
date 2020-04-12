@@ -64,7 +64,7 @@ public class camerachase : MonoBehaviour
             Offsety = 0.3f;
             FieldOfView = 90.0F;
 
-            SpeedTranslate = 0.7F;
+            SpeedTranslate = 0.6F;
 
             if (!SwitchFieldOfViewInterp)
             {
@@ -77,8 +77,8 @@ public class camerachase : MonoBehaviour
         }
         else
         {
-            Offsetx = 5.0f;
-            Offsety = 3.0f;
+            Offsetx = 6.0f;
+            Offsety = 5.0f;
             FieldOfView = 60.0F;
             SpeedTranslate = 0.3F;
 
