@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         pitchFacing = Mathf.Clamp(pitchFacing, -30.0f, 30.0f);
 
         transform.rotation = Quaternion.AngleAxis(yawFacing, Vector3.up) *
-            Quaternion.AngleAxis(pitchFacing, Vector3.right);
+            Quaternion.AngleAxis(0 /*pitchFacing*/, Vector3.right);
     }
 
 }
