@@ -13,7 +13,7 @@ public class camerachase : MonoBehaviour
     private float durationFieldOfView;
     private float StartFieldOfView;
     private float EndFieldOfView;
-
+    private float TimerBeforeTravelCam;
     private Vector3 PrevPos;
     private Vector3 NewPos;
     private Vector3 ObjVel;
@@ -21,9 +21,10 @@ public class camerachase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimerBeforeTravelCam = 3.0F;
         rb = GetComponent<Rigidbody>();
-        timer = 1.5f;
-        durationFieldOfView = 0.8f;
+        timer = TimerBeforeTravelCam;
+        durationFieldOfView = 0.6f;
         SwitchFieldOfViewInterp = false;
         timerFieldOfView = durationFieldOfView;
         StartFieldOfView = 90.0F;
@@ -55,7 +56,7 @@ public class camerachase : MonoBehaviour
             timer -= Time.deltaTime;
         } else
         {
-            timer = 1.5f;
+            timer = TimerBeforeTravelCam;
         }
 
         if (timer <= 0)
@@ -71,8 +72,9 @@ public class camerachase : MonoBehaviour
                 SwitchFieldOfViewInterp = true;
                 timerFieldOfView = 0.0F;
                 StartFieldOfView = 60.0F;
-                EndFieldOfView = 90.0F;
+                EndFieldOfView = 80.0F;
                 FirstInitSwitch = true;
+                durationFieldOfView = 0.5f;
             }
         }
         else
@@ -86,10 +88,27 @@ public class camerachase : MonoBehaviour
             {
                 timerFieldOfView = 0.0F;
                 SwitchFieldOfViewInterp = false;
-                StartFieldOfView = 90.0F;
+                StartFieldOfView = 80.0F;
                 EndFieldOfView = 60.0F;
+                durationFieldOfView = 0.4f;
             }
         }
+
+        if (Camera.main.fieldOfView == EndFieldOfView)
+        {
+            if(!SwitchFieldOfViewInterp)
+            {
+                Offsetx = 6.0f;
+                Offsety = 5.0f;
+            }
+            else
+            {
+                Offsetx = 5.0f;
+                Offsety = 0.3f;
+            }
+            
+        }
+
         Vector3 camOffSet = -transform.forward * Offsetx;
         camOffSet.y = 0.0f;
         camOffSet = camOffSet.normalized * Offsety;
