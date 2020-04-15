@@ -10,9 +10,16 @@ public class IntroManager : MonoBehaviour
     public FadingText[] FaidngTextArray;
     public IntroImage[] ImageArray;
 
+    private TextMeshProUGUI fadingText;
+    private GameObject transitionEffectImage;
+    private GameObject introImage;
+
     // Start is called before the first frame update
     void Start()
     {
+        fadingText = GameObject.FindGameObjectWithTag("FadingText").GetComponent<TextMeshProUGUI>();
+        transitionEffectImage = GameObject.FindGameObjectWithTag("TransitionEffectImage");
+        introImage = GameObject.FindGameObjectWithTag("IntroImage");
         StartCoroutine("PlayTextSequence");
         StartCoroutine("PlayImageSequence");
     }
@@ -28,28 +35,28 @@ public class IntroManager : MonoBehaviour
 
     IEnumerator PlayTextSequence()
     {
-        var originalColor = GameObject.FindGameObjectWithTag("FadingText").GetComponent<TextMeshProUGUI>().color;
-        foreach (var fadingText in FaidngTextArray)
+        var originalColor = fadingText.color;
+        foreach (var eachFadingText in FaidngTextArray)
         {
-            GameObject.FindGameObjectWithTag("FadingText").GetComponent<TextMeshProUGUI>().text = fadingText.text;
+            fadingText.text = eachFadingText.text;
 
             // Fade in:
             while (originalColor.a<1)
             {
                 yield return new WaitForSeconds(0.01f);
                 originalColor.a += 0.01f;
-                GameObject.FindGameObjectWithTag("FadingText").GetComponent<TextMeshProUGUI>().color = originalColor;
+                fadingText.color = originalColor;
             }
 
             // Delay:
-            yield return new WaitForSeconds(fadingText.timeInSeconds);
+            yield return new WaitForSeconds(eachFadingText.timeInSeconds);
 
             // Fade out:
             while (originalColor.a > 0)
             {
                 yield return new WaitForSeconds(0.01f);
                 originalColor.a -= 0.01f;
-                GameObject.FindGameObjectWithTag("FadingText").GetComponent<TextMeshProUGUI>().color = originalColor;
+                fadingText.color = originalColor;
             }
 
             yield return new WaitForSeconds(2);
@@ -58,9 +65,7 @@ public class IntroManager : MonoBehaviour
 
     IEnumerator PlayImageSequence()
     {
-        var transitionEffectImage = GameObject.FindGameObjectWithTag("TransitionEffectImage");
         var transitionEffectColor = transitionEffectImage.GetComponent<Image>().color;
-        var introImage = GameObject.FindGameObjectWithTag("IntroImage");
 
         foreach (var currentImage in ImageArray)
         {
