@@ -16,6 +16,11 @@ public class VectorFollow : MonoBehaviour
     float fastRange;
     float orbitRange;
     float tree_ActivateRange = 10.0f;
+    float tFastSpeed = 5.0f;
+    float tMediumSpeed = 1.0f;
+    float tOrbitSpeed;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -94,29 +99,30 @@ public class VectorFollow : MonoBehaviour
             Vector3 mLookDirection = (OrangeTree.transform.position - transform.position);
             float distTree = (OrangeTree.transform.position - transform.position).magnitude;
 
-            float turnRate = 0.1f;
-            float speedNow;
-            float angleOffset = 0.0f;
+            float tTurnRate = 0.1f;
+            float tSpeedNow = .2f;
+            float tAngleOffset = 0.0f;
 
             if (distTree < orbitRange)
             {
-                particles.rateOverTime = 4;
-                speedNow = orbitSpeed;
-                turnRate = 0.05f;
+                particles.rateOverTime = 100;
+                tSpeedNow = orbitSpeed;
+                tTurnRate = 0.05f;
                 //angleOffset = 90.0f;
             }
             else if (distTree > fastRange)
             {
-                speedNow = fastSpeed;
+                tSpeedNow = fastSpeed;
             }
             else
             {
-                speedNow = mediumSpeed;
+                tSpeedNow = mediumSpeed;
             }
-            transform.Translate(0.0f, 0.0f, speedNow * Time.deltaTime);
+            transform.Translate(0.0f, 0.0f, tSpeedNow * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation,
-                Quaternion.LookRotation(mLookDirection) * Quaternion.AngleAxis(angleOffset, Vector3.up),
-                turnRate);
+                Quaternion.LookRotation(mLookDirection) * Quaternion.AngleAxis(tAngleOffset, Vector3.up),
+                tTurnRate);
+            Debug.Log(OrangeTree.transform.position - transform.position);
         }
     }
 }
