@@ -91,7 +91,7 @@ public class VectorFollow : MonoBehaviour
         }
         else
         {
-            Vector3 mLookDirection = (Orange.transform.position - transform.position);
+            Vector3 mLookDirection = (OrangeTree.transform.position - transform.position);
             float distTree = (OrangeTree.transform.position - transform.position).magnitude;
 
             float turnRate = 0.1f;
@@ -103,7 +103,7 @@ public class VectorFollow : MonoBehaviour
                 particles.rateOverTime = 4;
                 speedNow = orbitSpeed;
                 turnRate = 0.05f;
-                angleOffset = 90.0f;
+                //angleOffset = 90.0f;
             }
             else if (distTree > fastRange)
             {
