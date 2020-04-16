@@ -22,6 +22,7 @@ TagManager:
   - PlayerTrailParticle
   - Tree2
   - Tree1
+  - Tree1Leaves
   layers:
   - Default
   - TransparentFX
