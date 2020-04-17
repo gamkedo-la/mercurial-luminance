@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private float pitchFacing = 0.0f;
     private float yawFacing = 0.0f;
     public float forwardSpeed = 5.0f;
+    public float fastForwardSpeed = 10.0f;
+    public float normalForwardSpeed = 5.0f;
     private float zVel = 0.0f;
     public float minAlt = 0.5f;
     private Transform latePosition;
@@ -37,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
     {
         
         transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed + zVel * Vector3.up;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            forwardSpeed = fastForwardSpeed;
+        }
 
         RaycastHit rhInfo;
         LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"

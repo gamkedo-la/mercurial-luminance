@@ -19,7 +19,7 @@ public class TreeTopActivator : MonoBehaviour
     void Update()
     {
         float dist = (transform.position - glowToMatch.transform.position).magnitude;
-        if (dist < 20)
+        if (dist < 50)
         {
             for (int i = 0; i < ListToEnable.Length; i++)
             {
