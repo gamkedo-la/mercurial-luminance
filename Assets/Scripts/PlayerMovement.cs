@@ -12,7 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private float zVel = 0.0f;
     public float minAlt = 0.5f;
     private Transform latePosition;
-
+    private float fallTime;
+    private float timer;
+    public Vector3 lastPosition;
+    private float oldTime;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +35,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed + zVel * Vector3.up;
 
         RaycastHit rhInfo;
         LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"
         if (Physics.Raycast(transform.position, Vector3.down, out rhInfo, minAlt, cameraMask))
         {
+            oldTime += Time.deltaTime;
             transform.position = rhInfo.point + minAlt * Vector3.up;
+            timer = 0.0f;
+            lastPosition = transform.position;
+
+            Debug.Log("Saving Position");
             zVel = 0.0f;
            
             if(Input.GetKeyDown(KeyCode.Space))
@@ -49,6 +58,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            timer += Time.deltaTime;
+            if(timer > 3.0f)
+            {
+                timer = 0.0f;
+                transform.position = lastPosition;
+                Debug.Log("LastPosition Happening");
+                zVel = 0.0f;
+            }
             zVel += -.4f * Time.deltaTime;
         }
 
