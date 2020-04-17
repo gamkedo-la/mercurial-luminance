@@ -25,6 +25,8 @@ public class TreeTopActivator : MonoBehaviour
             {
                 ListToEnable[i].SetActive(true);
             }
+            LookAtMe myLookScript = gameObject.GetComponent<LookAtMe>();
+            myLookScript.WatchMeNow();
             Debug.Log("Triggered by distance");
             this.enabled = false;
         }

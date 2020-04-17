@@ -17,6 +17,8 @@ public class camerachase : MonoBehaviour
     private Vector3 PrevPos;
     private Vector3 NewPos;
     private Vector3 ObjVel;
+    private ForceLook forceLookscript;
+    private float vertPivot = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class camerachase : MonoBehaviour
         StartFieldOfView = 90.0F;
         EndFieldOfView = 60.0F;
         FirstInitSwitch = false;
+        forceLookscript = Camera.main.gameObject.GetComponent<ForceLook>();
     }
 
     void FixedUpdate()
@@ -112,7 +115,10 @@ public class camerachase : MonoBehaviour
         Vector3 camOffSet = -transform.forward * Offsetx;
         camOffSet.y = 0.0f;
         camOffSet = camOffSet.normalized * Offsety;
-        camOffSet += Vector3.up * 3.0f;
+        camOffSet += Vector3.up * (3.0f + vertPivot);
+        vertPivot += Input.GetAxis("Mouse Y") * -0.2f;
+
+        vertPivot = Mathf.Clamp(vertPivot, -2.0f, 0.0f);
 
         RaycastHit rhInfo;
         LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"
@@ -126,7 +132,12 @@ public class camerachase : MonoBehaviour
         }
 
         Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, transform.position + camOffSet, ref velocity, SpeedTranslate);
-        Camera.main.transform.LookAt(transform.position + Vector3.up * 2.0f * scaledBackBy);
+        //inactivating normal camera looking
+        if (forceLookscript.lookAt == null)
+        {
+                Camera.main.transform.LookAt(transform.position + Vector3.up * 2.0f * scaledBackBy);
+        }
+       
 
         if (Camera.main.fieldOfView != EndFieldOfView)
         {

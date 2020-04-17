@@ -23,7 +23,7 @@ public class Tree2Animator : MonoBehaviour
     void Update()
     {
         float dist = (OrangeTree.transform.position - Orange.transform.position).magnitude;
-        if (dist < 10)
+        if (dist < 20)
         {
             animator.SetTrigger("Touched");
             Debug.Log("Triggered by distance");

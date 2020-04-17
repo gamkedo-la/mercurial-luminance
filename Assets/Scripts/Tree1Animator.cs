@@ -26,6 +26,8 @@ public class Tree1Animator : MonoBehaviour
         if (dist < 10)
         {
             animator.SetTrigger("Touched");
+            LookAtMe myLookScript = gameObject.GetComponent<LookAtMe>();
+            myLookScript.WatchMeNow();
             Debug.Log("Triggered by distance");
         }
     }
