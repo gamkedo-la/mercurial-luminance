@@ -120,7 +120,7 @@ public class camerachase : MonoBehaviour
         float camOffsetLength = camOffSet.magnitude;
         if (Physics.Raycast(transform.position, camOffSet, out rhInfo, camOffsetLength, cameraMask))
         {
-            Debug.Log(rhInfo.collider.gameObject.name);
+            //Debug.Log(rhInfo.collider.gameObject.name);
             camOffSet = rhInfo.point - transform.position;
             scaledBackBy = camOffSet.magnitude / camOffsetLength;
         }

@@ -112,17 +112,16 @@ public class VectorFollow : MonoBehaviour
             }
             else if (distTree > fastRange)
             {
-                tSpeedNow = fastSpeed;
+                tSpeedNow = tFastSpeed;
             }
             else
             {
-                tSpeedNow = mediumSpeed;
+                tSpeedNow = tMediumSpeed;
             }
             transform.Translate(0.0f, 0.0f, tSpeedNow * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation,
                 Quaternion.LookRotation(mLookDirection) * Quaternion.AngleAxis(tAngleOffset, Vector3.up),
                 tTurnRate);
-            Debug.Log(OrangeTree.transform.position - transform.position);
         }
     }
 }
