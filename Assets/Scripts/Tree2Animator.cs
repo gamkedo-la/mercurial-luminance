@@ -9,6 +9,7 @@ public class Tree2Animator : MonoBehaviour
     Animation anim;
     float distance;
     public GameObject Orange, OrangeTree;
+    bool didHappen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +21,15 @@ public class Tree2Animator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        if (didHappen) {
+            return;
+        }
         float dist = (OrangeTree.transform.position - Orange.transform.position).magnitude;
         if (dist < 20)
         {
+            didHappen = true;
+            SoundPlayer.PlayClipByName("tree_branches", Random.Range(0.9f, 1.0f));
             animator.SetTrigger("Touched");
             Debug.Log("Triggered by distance");
         }
