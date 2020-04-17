@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float forwardSpeed = 5.0f;
     private float zVel = 0.0f;
     public float minAlt = 0.5f;
+    private Transform latePosition;
+
 
     // Start is called before the first frame update
     void Start()
