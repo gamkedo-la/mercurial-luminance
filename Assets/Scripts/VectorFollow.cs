@@ -9,8 +9,8 @@ public class VectorFollow : MonoBehaviour
     public bool TreeActivated;
     public ParticleSystem.EmissionModule particles;
 
-    float fastSpeed = 5.0f;
-    float mediumSpeed = 1.0f;
+    float fastSpeed = 8.0f;
+    float mediumSpeed = 5.0f;
     float orbitSpeed;
     float ai_ActivateRange = 2.0f;
     float fastRange;
@@ -31,9 +31,9 @@ public class VectorFollow : MonoBehaviour
         Orange = GameObject.FindGameObjectWithTag("OrangeSpirit");
         OrangeTree = GameObject.FindGameObjectWithTag("Tree1");
         Activated = false;
-        orbitRange = Random.Range(0.8f, 3.0f);
-        fastRange = orbitRange + Random.Range(1.0f, 2.5f);
-        orbitSpeed = Random.Range(0.4f, 1.4f);
+        orbitRange = Random.Range(0.3f, 0.90f);
+        fastRange = orbitRange + Random.Range(5.0f, 7.5f);
+        orbitSpeed = Random.Range(0.05f, 0.2f);
     }
 
     // Update is called once per frame

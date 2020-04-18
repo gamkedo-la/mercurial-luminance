@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        endGame = GameObject.FindGameObjectWithTag("EndGame");
+        //endGame = GameObject.FindGameObjectWithTag("EndGame");
         //endGame.SetActive(false);
     }
 
@@ -41,49 +41,53 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        endGame = GameObject.FindGameObjectWithTag("EndGame");
+        /*endGame = GameObject.FindGameObjectWithTag("EndGame");
         if (endGame.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Debug.Log("Cursor Active");
         }
-        transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed + zVel * Vector3.up;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        else*/
         {
-            forwardSpeed = fastForwardSpeed;
-        }
+            transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed + zVel * Vector3.up;
 
-        RaycastHit rhInfo;
-        LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"
-        if (Physics.Raycast(transform.position, Vector3.down, out rhInfo, minAlt, cameraMask))
-        {
-            oldTime += Time.deltaTime;
-            transform.position = rhInfo.point + minAlt * Vector3.up;
-            timer = 0.0f;
-            lastPosition = transform.position;
-
-            Debug.Log("Saving Position");
-            zVel = 0.0f;
-           
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                SoundPlayer.PlayClipByName("wind_woosh", Random.Range(0.9f, 1.0f));
-                zVel = 0.2f;
+                forwardSpeed = fastForwardSpeed;
             }
-        }
-        else
-        {
-            timer += Time.deltaTime;
-            if(timer > 3.0f)
+
+            RaycastHit rhInfo;
+            LayerMask cameraMask = ~LayerMask.GetMask("Player", "NPC"); // ~ for "everything but"
+            if (Physics.Raycast(transform.position, Vector3.down, out rhInfo, minAlt, cameraMask))
             {
+                oldTime += Time.deltaTime;
+                transform.position = rhInfo.point + minAlt * Vector3.up;
                 timer = 0.0f;
-                transform.position = lastPosition;
-                Debug.Log("LastPosition Happening");
+                lastPosition = transform.position;
+
+                Debug.Log("Saving Position");
                 zVel = 0.0f;
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    SoundPlayer.PlayClipByName("wind_woosh", Random.Range(0.9f, 1.0f));
+                    zVel = 0.2f;
+                }
             }
-            zVel += -.4f * Time.deltaTime;
+            else
+            {
+                timer += Time.deltaTime;
+                if (timer > 3.0f)
+                {
+                    timer = 0.0f;
+                    transform.position = lastPosition;
+                    Debug.Log("LastPosition Happening");
+                    zVel = 0.0f;
+                }
+                zVel += -.4f * Time.deltaTime;
+            }
         }
 
 
