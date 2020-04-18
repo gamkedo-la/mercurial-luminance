@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 public static class SoundNames
 {
-    public const string clatter = "clatter";
-    public const string tree_branches = "tree_branches";
-    public const string wind_woosh = "wind_woosh";
+    public const string clatter = "clatter-2";
+    public const string tree_branches = "tree_branches-2";
+    public const string wind_woosh = "wind_woosh-2";
 }
 
 public class SoundPlayer: MonoBehaviour {
