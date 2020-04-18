@@ -5,6 +5,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public static class SoundNames
+{
+    public const string clatter = "clatter";
+    public const string tree_branches = "tree_branches";
+    public const string wind_woosh = "wind_woosh";
+}
+
 public class SoundPlayer: MonoBehaviour {
     public static Dictionary<string, AudioClip> snds = new Dictionary<string, AudioClip>();
 

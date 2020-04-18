@@ -89,7 +89,7 @@ public class VectorFollow : MonoBehaviour
                 {
                     if (dist < ai_ActivateRange)
                     {
-                        SoundPlayer.PlayClipByName("clatter", Random.Range(0.9f, 1.0f));
+                        SoundPlayer.PlayClipByName(SoundNames.clatter, Random.Range(0.9f, 1.0f));
                         Activated = true;
                     }
                 }

@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    SoundPlayer.PlayClipByName("wind_woosh", Random.Range(0.9f, 1.0f));
+                    SoundPlayer.PlayClipByName(SoundNames.wind_woosh, Random.Range(0.9f, 1.0f));
                     zVel = 0.2f;
                 }
             }

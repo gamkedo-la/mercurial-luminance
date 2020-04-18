@@ -32,7 +32,7 @@ public class Tree2Animator : MonoBehaviour
         if (dist < 50)
         {
             didHappen = true;
-            SoundPlayer.PlayClipByName("tree_branches", Random.Range(0.9f, 1.0f));
+            SoundPlayer.PlayClipByName(SoundNames.tree_branches, Random.Range(0.9f, 1.0f));
             animator.SetTrigger("Touched");
             purpleLeaves.SetActive(true);
             Debug.Log("Triggered by distance");

@@ -30,7 +30,7 @@ public class Tree1Animator : MonoBehaviour
         if (dist < 10)
         {
             didHappen = true;
-            SoundPlayer.PlayClipByName("tree_branches", Random.Range(0.9f, 1.0f));
+            SoundPlayer.PlayClipByName(SoundNames.tree_branches, Random.Range(0.9f, 1.0f));
             animator.SetTrigger("Touched");
             LookAtMe myLookScript = gameObject.GetComponent<LookAtMe>();
             myLookScript.WatchMeNow();
