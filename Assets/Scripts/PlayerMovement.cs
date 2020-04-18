@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         endGame = GameObject.FindGameObjectWithTag("EndGame");
-
     }
 
     void FixedUpdate()
@@ -41,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(endGame.activeSelf)
+        endGame = GameObject.FindGameObjectWithTag("EndGame");
+        if (endGame.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

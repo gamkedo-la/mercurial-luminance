@@ -28,7 +28,7 @@ public class TreeTopActivator : MonoBehaviour
             SoundPlayer.PlayClipByName("tree_branches", Random.Range(0.9f, 1.0f));
             LookAtMe myLookScript = gameObject.GetComponent<LookAtMe>();
             myLookScript.WatchMeNow();
-            Debug.Log("Triggered by distance");
+            //Debug.Log("Triggered by distance");
             this.enabled = false;
         }
     }
