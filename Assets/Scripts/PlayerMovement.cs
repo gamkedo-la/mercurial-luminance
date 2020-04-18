@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Debug.Log("Cursor Active");
+            //Debug.Log("Cursor Active");
         }
 
         else
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
                 timer = 0.0f;
                 lastPosition = transform.position;
 
-                Debug.Log("Saving Position");
+                //Debug.Log("Saving Position");
                 zVel = 0.0f;
 
                 if (Input.GetKeyDown(KeyCode.Space))
