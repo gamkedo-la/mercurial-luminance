@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         endGame = GameObject.FindGameObjectWithTag("EndGame");
+        //endGame.SetActive(false);
     }
 
     void FixedUpdate()
