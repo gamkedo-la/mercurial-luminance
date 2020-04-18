@@ -18,11 +18,15 @@ public class PlayerMovement : MonoBehaviour
     private float timer;
     public Vector3 lastPosition;
     private float oldTime;
+    public GameObject endGame;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        endGame = GameObject.FindGameObjectWithTag("EndGame");
+
     }
 
     void FixedUpdate()
@@ -37,7 +41,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(endGame.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Debug.Log("Cursor Active");
+        }
         transform.position += transform.forward * Time.deltaTime * forwardSpeed * driveSpeed + zVel * Vector3.up;
 
         if (Input.GetKeyDown(KeyCode.LeftShift))

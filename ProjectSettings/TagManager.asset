@@ -25,6 +25,7 @@ TagManager:
   - Tree1Leaves
   - PurpleLeaves
   - Tree3
+  - EndGame
   layers:
   - Default
   - TransparentFX
