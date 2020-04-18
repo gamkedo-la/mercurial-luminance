@@ -24,6 +24,7 @@ TagManager:
   - Tree1
   - Tree1Leaves
   - PurpleLeaves
+  - Tree3
   layers:
   - Default
   - TransparentFX
