@@ -246,7 +246,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1013727666
+--- !u!21 &691460908
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -709,12 +709,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Mercurial Luminence\nA HomeTeam GameDev (Outpost) Online Collab\n\n-- Created
     by --\nJustin Chin: Project lead, core gameplay, particle systems, expressive
-    AI motion, player control, models, level design\nPowerproust: Camera smoothing,
-    movement refactor, jitter fix\nRami Bukhari: Intro manager (\"Ken Burns\" functionality),
-    zoom support\nKlaim (A. Jo\xEBl Lamotte): Music and related integration, sound
-    improvements\nMohamed AbdAllah: Fairy detection script, tree orbit functionality\nChris
-    DeLeon: Camera raycast fix, placeholder tree, initial sounds, compiled credits\n\nClick
-    anywhere to begin"
+    AI motion, player control, models, level design, tree animation\nPowerproust:
+    Camera smoothing, movement refactor, jitter fix\nRami Bukhari: Intro manager (\"Ken
+    Burns\" functionality), zoom support\nKlaim (A. Jo\xEBl Lamotte): Music and related
+    integration, sound improvements\nMohamed AbdAllah: Fairy detection script, tree
+    orbit functionality\nChris DeLeon: Camera raycast fix, placeholder tree, initial
+    sounds, compiled credits, intro image creation.\n\nClick anywhere to begin"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e56c02a2eab609044a9f00394568ce44, type: 2}
   m_sharedMaterial: {fileID: 6206265381996948632, guid: e56c02a2eab609044a9f00394568ce44,
@@ -784,12 +784,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.48849714, w: -357.18262}
   m_textInfo:
     textComponent: {fileID: 1315327346}
-    characterCount: 582
+    characterCount: 621
     spriteCount: 0
-    spaceCount: 78
-    wordCount: 77
+    spaceCount: 83
+    wordCount: 82
     linkCount: 0
-    lineCount: 12
+    lineCount: 13
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1013727666}
+  m_Material: {fileID: 691460908}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1013727666}
+  m_sharedMaterial: {fileID: 691460908}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 1546028691}
